@@ -1,0 +1,21 @@
+.search-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+}
+
+.search-bar {
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 310px;
+}
+
+.search-c-f {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30px;
+}

@@ -1,0 +1,11 @@
+.top-button-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+}
+
+.city {
+    margin: 10px;
+}
