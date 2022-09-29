@@ -19,6 +19,7 @@ function App() {
   }, []);
 
   const selectCity = (city: string) => {
+    setCity(city);
     searchByCityName(city);
   };
 
@@ -31,7 +32,6 @@ function App() {
       cityName: city,
       units: units,
     });
-    console.log(value);
 
     if (error) {
       setWeatherInfo(null);

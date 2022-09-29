@@ -8,4 +8,7 @@
 
 .city {
     margin: 10px;
+    background-color: antiquewhite;
+    width: 100px;
+    border-radius: 29px;
 }

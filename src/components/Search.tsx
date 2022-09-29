@@ -19,10 +19,10 @@ function Search({ setCityName, searchByCityName, cityName }: SearchProps) {
           placeholder="Search..."
           className=""
           onChange={setCityName}
+          value={cityName}
         />
         <AiOutlineSearch
           onClick={() => {
-            console.log(cityName);
             searchByCityName(cityName);
           }}
         />

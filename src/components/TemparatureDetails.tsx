@@ -61,17 +61,18 @@ const OtherDetails = ({
 };
 
 const TemperatureDetails = memo(function ({ weatherInfo, unit }: any) {
-  console.log(unit);
+  console.log(weatherInfo);
   const { temp, feels_like, humidity, pressure, temp_max, temp_min } =
     weatherInfo.main;
   const { name } = weatherInfo;
   const { speed } = weatherInfo.wind;
+  console.log(speed);
 
   const tempUnit = unit === "metric" ? "C" : "F";
   return (
     <>
       <Temperature name={name} temp={temp} tempUnit={tempUnit} />
-      <OtherDetails {...weatherInfo.main} tempUnit={tempUnit} />
+      <OtherDetails {...weatherInfo.main} tempUnit={tempUnit} speed={speed} />
     </>
   );
 });
