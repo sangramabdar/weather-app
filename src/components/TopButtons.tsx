@@ -27,11 +27,11 @@ interface TopButtonsProps {
 
 const TopButtons = memo(function ({ selectCity }: TopButtonsProps) {
   return (
-    <div className="top-button-row">
+    <div className="flex justify-between p-1 text-[20px] ">
       {topCities.map(city => {
         return (
           <button
-            className="city"
+            className=""
             key={city.id}
             onClick={() => {
               selectCity(city.name);

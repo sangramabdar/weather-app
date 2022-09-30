@@ -12,12 +12,12 @@ interface SearchProps {
 
 function Search({ setCityName, searchByCityName, cityName }: SearchProps) {
   return (
-    <div className="search-row">
-      <div className="search-bar">
+    <div className="h-10 flex justify-between mt-2 items-center">
+      <div className="flex items-center grow gap-2">
         <input
           type="text"
           placeholder="Search..."
-          className=""
+          className="text-black w-30 h-5 rounded p-3"
           onChange={setCityName}
           value={cityName}
         />
@@ -25,24 +25,27 @@ function Search({ setCityName, searchByCityName, cityName }: SearchProps) {
           onClick={() => {
             searchByCityName(cityName);
           }}
+          size={"1.5rem"}
         />
-        <GoLocation />
+        {/* <GoLocation /> */}
       </div>
-      <div className="search-c-f">
+      <div className="flex grow gap-2">
         <button
+          className="text-[1.5rem]"
           onClick={() => {
             searchByCityName(cityName, "metric");
           }}
         >
-          c
+          C
         </button>
-        <p>|</p>
+        <p className="w-[1px] h-10 bg-white"></p>
         <button
+          className="text-[1.5rem]"
           onClick={() => {
             searchByCityName(cityName, "imperial");
           }}
         >
-          f
+          F
         </button>
       </div>
     </div>

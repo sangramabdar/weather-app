@@ -44,7 +44,7 @@ function App() {
   };
 
   return (
-    <div className="main-div">
+    <div className="mx-auto my-8 max-w-[700px] flex flex-col gap-5">
       <TopButtons selectCity={selectCity} />
       <Search
         cityName={city}
