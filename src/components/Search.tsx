@@ -1,7 +1,15 @@
-import React, { ChangeEventHandler } from "react";
+import {
+  Input,
+  Button,
+  Flex,
+  Box,
+  Spacer,
+  ButtonGroup,
+  IconButton,
+} from "@chakra-ui/react";
+import { ChangeEventHandler } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GoLocation } from "react-icons/go";
-import { unit } from "../App";
+import { unit } from "../config/constants";
 import "../style/search.css";
 
 interface SearchProps {
@@ -12,43 +20,53 @@ interface SearchProps {
 
 function Search({ setCityName, searchByCityName, cityName }: SearchProps) {
   return (
-    <div className="h-10 flex justify-between mt-2 items-center">
-      <div className="flex items-center grow gap-2">
-        <input
+    <Flex className="h-10 mt-2" gap="2">
+      <Box className="flex items-center grow gap-5">
+        <Input
           type="text"
           placeholder="Search..."
           className="text-black w-30 h-5 rounded p-3"
           onChange={setCityName}
           value={cityName}
+          variant="filled"
         />
-        <AiOutlineSearch
-          onClick={() => {
-            searchByCityName(cityName);
-          }}
-          size={"1.5rem"}
+        <IconButton
+          colorScheme="blue"
+          icon={
+            <AiOutlineSearch
+              onClick={() => {
+                searchByCityName(cityName);
+              }}
+              size={"1.5rem"}
+              fill="white"
+            />
+          }
+          aria-label="Search by city name"
         />
-        {/* <GoLocation /> */}
-      </div>
-      <div className="flex grow gap-2">
-        <button
+      </Box>
+      <Spacer />
+      <ButtonGroup className="flex">
+        <Button
+          colorScheme="blue"
           className="text-[1.5rem]"
           onClick={() => {
             searchByCityName(cityName, "metric");
           }}
         >
           C
-        </button>
+        </Button>
         <p className="w-[1px] h-10 bg-white"></p>
-        <button
+        <Button
+          colorScheme="blue"
           className="text-[1.5rem]"
           onClick={() => {
             searchByCityName(cityName, "imperial");
           }}
         >
           F
-        </button>
-      </div>
-    </div>
+        </Button>
+      </ButtonGroup>
+    </Flex>
   );
 }
 

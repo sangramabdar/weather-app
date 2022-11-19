@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import React, { memo, MouseEventHandler } from "react";
 import "../style/top-button.css";
 
@@ -30,15 +31,15 @@ const TopButtons = memo(function ({ selectCity }: TopButtonsProps) {
     <div className="flex justify-between p-1 text-[20px] ">
       {topCities.map(city => {
         return (
-          <button
-            className=""
+          <Button
+            colorScheme="blue"
             key={city.id}
             onClick={() => {
               selectCity(city.name);
             }}
           >
             {city.name}
-          </button>
+          </Button>
         );
       })}
     </div>

@@ -2,11 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import Search from "./components/Search";
 import TemparatureDetails from "./components/TemparatureDetails";
 import TopButtons from "./components/TopButtons";
+import { unit, DEFAULT_CITY_NAME } from "./config/constants";
 import { getWeatherDataByCity } from "./services/weather-api";
 import "./style/app.css";
-
-const DEFAULT_CITY_NAME = "Sydney";
-export type unit = "metric" | "imperial";
 
 function App() {
   const [city, setCity] = useState("");
