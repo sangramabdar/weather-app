@@ -21,23 +21,24 @@ async function getWeatherDataByCity(requestInfo: {
   units?: unit;
 }) {
   const url = BuildURL({ q: requestInfo.cityName, units: requestInfo.units });
-  const data = await getRequest(url.toString());
-  return data;
+  const result = await getRequest(url.toString());
+  return result;
 }
 
 async function getRequest(url: string) {
   const response = await fetch(url);
-  const data = await response.json();
+  const responseBody = await response.json();
 
   if (!response.ok) {
     return {
-      error: data.message,
+      error: responseBody.message,
       value: null,
     };
   }
+
   return {
     error: null,
-    value: data,
+    value: responseBody,
   };
 }
 

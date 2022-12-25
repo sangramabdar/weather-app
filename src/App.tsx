@@ -1,19 +1,24 @@
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Search from "./components/Search";
 import TemparatureDetails from "./components/TemparatureDetails";
 import TopButtons from "./components/TopButtons";
 import { unit, DEFAULT_CITY_NAME } from "./config/constants";
 import { getWeatherDataByCity } from "./services/weather-api";
 import "./style/app.css";
+import { Center, Spinner } from "@chakra-ui/react";
+import Loading from "./components/Loading";
+import Error from "./components/Error";
 
 function App() {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(DEFAULT_CITY_NAME);
   const [error, setError] = useState(null);
   const [weatherInfo, setWeatherInfo] = useState(null);
   const [currentUnitType, setCurrentUnitType] = useState<unit>("metric");
 
   useEffect(() => {
-    searchByCityName(DEFAULT_CITY_NAME);
+    setTimeout(() => {
+      searchByCityName(DEFAULT_CITY_NAME);
+    }, 1000);
   }, []);
 
   const selectCity = (city: string) => {
@@ -25,10 +30,10 @@ function App() {
     setCity(e.target.value);
   };
 
-  const searchByCityName = async (city: string, units: unit = "metric") => {
+  const searchByCityName = async (cityName: string, units: unit = "metric") => {
     const { error, value } = await getWeatherDataByCity({
-      cityName: city,
-      units: units,
+      cityName,
+      units,
     });
 
     if (error) {
@@ -38,6 +43,7 @@ function App() {
       setWeatherInfo(value);
       setError(null);
     }
+
     setCurrentUnitType(units);
   };
 
@@ -49,10 +55,14 @@ function App() {
         setCityName={setCityName}
         searchByCityName={searchByCityName}
       />
+
+      {!weatherInfo && !error ? <Loading /> : null}
+
       {weatherInfo && (
         <TemparatureDetails unit={currentUnitType} weatherInfo={weatherInfo} />
       )}
-      {error && error}
+
+      {error && <Error error={error} />}
     </div>
   );
 }

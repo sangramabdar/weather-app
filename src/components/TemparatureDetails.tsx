@@ -26,7 +26,7 @@ const OtherDetails = ({
     <div className="grow flex flex-col gap-5">
       <div className="flex justify-evenly">
         <div>
-          <p>min</p>
+          <p>Min</p>
           <p>
             {temp_min}
             <span className="relative">
@@ -36,7 +36,7 @@ const OtherDetails = ({
           </p>
         </div>
         <div>
-          <p>max</p>
+          <p>Max</p>
           <p>
             {temp_max}
             <span className="relative">
@@ -46,7 +46,7 @@ const OtherDetails = ({
           </p>
         </div>
         <div>
-          <p>feels like</p>
+          <p>Feels like</p>
           <p>
             {feels_like}
             <span className="relative">
@@ -58,15 +58,15 @@ const OtherDetails = ({
       </div>
       <div className="flex justify-evenly">
         <div>
-          <p>pressure</p>
+          <p>Pressure</p>
           <p>{pressure} hpa</p>
         </div>
         <div>
-          <p>humidity</p>
+          <p>Humidity</p>
           <p>{humidity} %</p>
         </div>
         <div>
-          <p>wind speed</p>
+          <p>Wind speed</p>
           <p>{speed} m/s</p>
         </div>
       </div>
@@ -82,6 +82,7 @@ const TemperatureDetails = memo(function ({ weatherInfo, unit }: any) {
   const { country } = weatherInfo.sys;
 
   const tempUnit = unit === "metric" ? "C" : "F";
+
   return (
     <Card bgColor="blue.500" className="h-[300px]">
       <CardHeader className="text-2xl mt-5">
